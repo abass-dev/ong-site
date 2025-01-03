@@ -5,14 +5,28 @@ services:
     build: .
     ports:
       - "3000:3000"
+      - "5555:5555"
     volumes:
       - .:/app
       - /app/node_modules
-      - app_next:/app/.next
+      - ong-site:/app/.next
     environment:
       - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  app_next:
+  postgres_data:
+  ong-site:
 
 
