@@ -1,15 +1,18 @@
-version: '3'
+version: '3.8'
+
 services:
-  w-food:
-    image: node:20-alpine
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    working_dir: /usr/src/app
+  app:
+    build: .
     ports:
       - "3000:3000"
-    env_file:
-      - .env  
-    stdin_open: true
-    tty: true
-    command: sh -c "npm install && npm run dev"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - app_next:/app/.next
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  app_next:
+
+
