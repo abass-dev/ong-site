@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Together, let's build a better world",
+    "description": "Our NGO is committed to creating a positive impact in the world. Join us in our mission for a fairer and more sustainable future.",
+    "cta": {
+      "projects": "Discover our projects",
+      "contact": "Contact us"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
+
