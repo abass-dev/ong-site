@@ -7,7 +7,10 @@
     "contact": "Contact"
   },
   "home": {
-    "title": "Ensemble, construisons un monde meilleur",
+    "title": {
+      "part1": "Autonomiser les communautés,",
+      "part2": "changer des vies"
+    },
     "description": "Notre ONG s'engage à créer un impact positif dans le monde. Rejoignez-nous dans notre mission pour un avenir plus juste et durable.",
     "cta": {
       "projects": "Découvrir nos projets",

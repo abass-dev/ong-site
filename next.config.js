@@ -4,7 +4,20 @@ const withNextIntl = createNextIntlPlugin('./app/i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your other Next.js config options here
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placeholder.svg',
+        pathname: '**',
+      },
+    ],
+  },
 }
 
 module.exports = withNextIntl(nextConfig);
