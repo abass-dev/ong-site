@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes'
 import { Sun, Moon, Menu, X, Globe } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
 import { locales } from '@/app/config'
+import Image from 'next/image'
 
 
 export default function Header() {
@@ -50,7 +51,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Votre ONG</span>
-            <img className="h-8 w-auto" src="/logo.png" alt="Logo ONG" />
+            <Image width={100} height={100} className="h-8 w-auto" src="/logo.png" alt="Logo ONG" />
           </Link>
         </div>
         <div className="flex lg:hidden">

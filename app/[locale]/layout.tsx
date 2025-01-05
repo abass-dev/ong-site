@@ -18,16 +18,24 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
+/**
+ * The root layout component.
+ *
+ * @param {Object} props - The props.
+ * @param {React.ReactNode} props.children - The children.
+ * @param {{ locale: string }} props.params - The locale param.
+ * @returns {JSX.Element} The root layout element.
+ */
 export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode
   params: { locale: string }
-}) {
+}): Promise<JSX.Element> {
   const { locale } = await params;
 
-  let messages;
+  let messages: Record<string, string> | undefined;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
