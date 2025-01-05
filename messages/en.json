@@ -24,6 +24,90 @@
     "title": "404 - Page Not Found",
     "description": "Oops! The page you're looking for doesn't exist.",
     "backHome": "Back to Home"
+  },
+  "about": {
+    "title": "About Us",
+    "mission": {
+      "title": "Our Mission",
+      "description": "We strive to empower communities and create lasting positive change through sustainable development initiatives."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "A world where every individual has the opportunity to thrive and contribute to a sustainable future."
+    },
+    "history": {
+      "title": "Our History",
+      "description": "Founded in 2005, our organization has been at the forefront of community development for over 15 years, impacting thousands of lives across the globe."
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "project1": {
+      "title": "Clean Water Initiative",
+      "description": "Providing access to clean and safe drinking water in rural communities.",
+      "category": "Water & Sanitation"
+    },
+    "project2": {
+      "title": "Education for All",
+      "description": "Building schools and supporting education programs in underserved areas.",
+      "category": "Education"
+    },
+    "project3": {
+      "title": "Sustainable Agriculture",
+      "description": "Promoting sustainable farming practices to improve food security and livelihoods.",
+      "category": "Agriculture"
+    }
+  },
+  "news": {
+    "title": "Latest News",
+    "news1": {
+      "title": "New Partnership Announced",
+      "description": "We're excited to announce our new partnership with Global Tech to bring digital literacy to rural areas.",
+      "date": "May 15, 2023"
+    },
+    "news2": {
+      "title": "Annual Fundraising Gala",
+      "description": "Join us for our annual fundraising gala to support our ongoing projects and initiatives.",
+      "date": "June 30, 2023"
+    },
+    "news3": {
+      "title": "Project Milestone Reached",
+      "description": "Our Clean Water Initiative has successfully provided clean water to 100,000 people this year.",
+      "date": "April 22, 2023"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "form": {
+      "title": "Get in Touch",
+      "description": "Have a question or want to get involved? Send us a message!",
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "message": "Message",
+      "messagePlaceholder": "Enter your message",
+      "submit": "Send Message"
+    }
+  },
+  "campaigns": {
+    "title": "Current Campaigns",
+    "subtitle": "Help those in need through your Sadaqa and Zakat",
+    "fiscal": {
+      "title": "Tax Reduction",
+      "description": "Illuminate lives through your taxes"
+    },
+    "lebanon": {
+      "title": "Lebanon Emergency",
+      "description": "Support our brothers and sisters in Lebanon"
+    },
+    "gaza": {
+      "title": "Gaza Emergency",
+      "description": "Support our brothers and sisters in Gaza"
+    },
+    "yemen": {
+      "title": "Yemen Emergency",
+      "description": "Help our brothers and sisters in Yemen"
+    }
   }
 }
-

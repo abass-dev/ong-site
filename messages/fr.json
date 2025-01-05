@@ -4,7 +4,8 @@
     "about": "À propos",
     "projects": "Projets",
     "news": "Actualités",
-    "contact": "Contact"
+    "contact": "Contact",
+    "campaigns": "Campagnes"
   },
   "home": {
     "title": {
@@ -24,6 +25,90 @@
     "title": "404 - Page Non Trouvée",
     "description": "Oups ! La page que vous recherchez n'existe pas.",
     "backHome": "Retour à l'Accueil"
+  },
+  "about": {
+    "title": "À Propos de Nous",
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Nous nous efforçons d'autonomiser les communautés et de créer un changement positif durable grâce à des initiatives de développement durables."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Un monde où chaque individu a la possibilité de s'épanouir et de contribuer à un avenir durable."
+    },
+    "history": {
+      "title": "Notre Histoire",
+      "description": "Fondée en 2005, notre organisation est à l'avant-garde du développement communautaire depuis plus de 15 ans, impactant des milliers de vies à travers le monde."
+    }
+  },
+  "projects": {
+    "title": "Nos Projets",
+    "project1": {
+      "title": "Initiative Eau Propre",
+      "description": "Fournir un accès à l'eau potable propre et sûre dans les communautés rurales.",
+      "category": "Eau & Assainissement"
+    },
+    "project2": {
+      "title": "Éducation pour Tous",
+      "description": "Construction d'écoles et soutien aux programmes éducatifs dans les zones défavorisées.",
+      "category": "Éducation"
+    },
+    "project3": {
+      "title": "Agriculture Durable",
+      "description": "Promotion de pratiques agricoles durables pour améliorer la sécurité alimentaire et les moyens de subsistance.",
+      "category": "Agriculture"
+    }
+  },
+  "news": {
+    "title": "Dernières Actualités",
+    "news1": {
+      "title": "Nouveau Partenariat Annoncé",
+      "description": "Nous sommes ravis d'annoncer notre nouveau partenariat avec Global Tech pour apporter l'alphabétisation numérique dans les zones rurales.",
+      "date": "15 mai 2023"
+    },
+    "news2": {
+      "title": "Gala Annuel de Collecte de Fonds",
+      "description": "Rejoignez-nous pour notre gala annuel de collecte de fonds pour soutenir nos projets et initiatives en cours.",
+      "date": "30 juin 2023"
+    },
+    "news3": {
+      "title": "Étape Importante du Projet Atteinte",
+      "description": "Notre Initiative Eau Propre a réussi à fournir de l'eau potable à 100 000 personnes cette année.",
+      "date": "22 avril 2023"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "form": {
+      "title": "Entrez en Contact",
+      "description": "Vous avez une question ou vous voulez vous impliquer ? Envoyez-nous un message !",
+      "name": "Nom",
+      "namePlaceholder": "Entrez votre nom",
+      "email": "Email",
+      "emailPlaceholder": "Entrez votre email",
+      "message": "Message",
+      "messagePlaceholder": "Entrez votre message",
+      "submit": "Envoyer le Message"
+    }
+  },
+  "campaigns": {
+    "title": "Campagnes en Cours",
+    "subtitle": "Aidez les démunis à travers vos Sadaqa et Zakat",
+    "fiscal": {
+      "title": "Réduction Fiscale",
+      "description": "Illuminez des vies grâce à vos impôts"
+    },
+    "lebanon": {
+      "title": "Urgence au Liban",
+      "description": "Allégez nos frères et soeurs au Liban"
+    },
+    "gaza": {
+      "title": "Urgence à Gaza",
+      "description": "Allégez nos frères et soeurs à Gaza"
+    },
+    "yemen": {
+      "title": "Urgence au Yémen",
+      "description": "Venez en aide à nos frères et soeurs au Yémen"
+    }
   }
 }
-
