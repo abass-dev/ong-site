@@ -19,6 +19,11 @@
   },
   "footer": {
     "rights": "Tous droits réservés."
+  },
+  "notFound": {
+    "title": "404 - Page Non Trouvée",
+    "description": "Oups ! La page que vous recherchez n'existe pas.",
+    "backHome": "Retour à l'Accueil"
   }
 }
 
