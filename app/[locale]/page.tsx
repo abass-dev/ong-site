@@ -33,13 +33,22 @@ export default function Home() {
                 >
                   {t('cta.projects')}
                 </Link>
-                <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
+                <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-300">
                   {t('cta.contact')} <span aria-hidden="true">→</span>
                 </Link>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="bg-gray-50 dark:bg-gray-900 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <Image
+          className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
+          src="/hero-image.jpg"
+          alt="Image représentative de notre mission"
+          width={1920}
+          height={1080}
+        />
       </div>
     </div>
   )
