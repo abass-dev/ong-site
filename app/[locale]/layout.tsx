@@ -1,51 +1,53 @@
-import { NextIntlClientProvider, useMessages } from 'next-intl'
+import '../globals.css'
+import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
+import { NextIntlClientProvider } from 'next-intl'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import {setRequestLocale} from 'next-intl/server';
-import {getMessages} from 'next-intl/server';
+import { locales } from '../i18n'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'ONG Site Web',
+  description: 'Site web professionnel pour une ONG',
+}
+
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'ar' }]
+  return locales.map((locale) => ({ locale }))
 }
 
-export default async function LocaleLayout({
-  children,
-  params
-}: {
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
-}) {
-  const messages = await getMessages()
-
-  if (!messages) {
-    notFound()
-  }
-  return <LocaleLayoutInner children={children} params={params} messages={messages} />
-}
-
-async function LocaleLayoutInner({
+export default async function RootLayout({
   children,
   params,
-  messages
 }: {
   children: React.ReactNode
-  params: Promise<{ locale: string }>
-  messages: any
+  params: { locale: string }
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
+
+  let messages;
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
+
+  if (!locales.includes(locale as any)) notFound();
+
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextIntlClientProvider locale={locale} messages={messages}>
+      <body className={inter.className}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
             <main>{children}</main>
             <Footer />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
 }
+

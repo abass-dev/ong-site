@@ -1,14 +1,16 @@
-import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 import { getRequestConfig } from 'next-intl/server';
+import { headers } from 'next/headers';
 
-export const locales = ['en', 'fr', 'ar'];
+export const locales = ['en', 'fr', 'ar'] as const;
 export const defaultLocale = 'fr';
 
-export default getRequestConfig(async ({ locale }) => ({
-  messages: (await import(`../messages/${locale}.json`)).default,
-  locale: 'en'
-}));
+export default getRequestConfig(async () => {
+  const headersList = await headers();
+  const locale = headersList.get('X-NEXT-INTL-LOCALE') || defaultLocale;
 
-
-export const { Link, redirect, usePathname, useRouter } = createSharedPathnamesNavigation({ locales });
+  return {
+    messages: (await import(`../messages/${locale}.json`)).default,
+    locale: locale
+  };
+});
 

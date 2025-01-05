@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useTheme } from 'next-themes'
 import { Sun, Moon, Menu, X, Globe } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl'
@@ -22,6 +22,16 @@ export default function Header() {
     setMounted(true)
   }, [])
 
+  const switchLanguage = useCallback((newLocale: string) => {
+    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '')
+    const newPath = `/${newLocale}${pathWithoutLocale}`
+    router.push(newPath)
+  }, [pathname, currentLocale, router])
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }, [theme, setTheme])
+
   if (!mounted) {
     return null
   }
@@ -33,16 +43,6 @@ export default function Header() {
     { name: t('news'), href: '/actualites' },
     { name: t('contact'), href: '/contact' },
   ]
-
-  const switchLanguage = (newLocale: string) => {
-    // Remove the current locale from the pathname
-    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '')
-    
-    // Construct the new path with the new locale
-    const newPath = `/${newLocale}${pathWithoutLocale}`
-    
-    router.push(newPath)
-  }
 
   return (
     <header className="bg-white dark:bg-gray-800 relative z-10">
@@ -101,7 +101,7 @@ export default function Header() {
             </div>
           </div>
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={toggleTheme}
             className="rounded-md bg-gray-100 dark:bg-gray-700 p-2 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
           >
             {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
@@ -166,7 +166,7 @@ export default function Header() {
                 </div>
                 <button
                   onClick={() => {
-                    setTheme(theme === 'dark' ? 'light' : 'dark')
+                    toggleTheme()
                     setMobileMenuOpen(false)
                   }}
                   className="mt-4 block w-full text-left px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg"

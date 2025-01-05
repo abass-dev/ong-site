@@ -1,4 +1,4 @@
-import { getRequestConfig, requestLocale } from 'next-intl/server';
+import { getRequestConfig } from 'next-intl/server';
 import { headers } from 'next/headers';
 
 export const locales = ['en', 'fr', 'ar'];
@@ -10,9 +10,10 @@ export async function getLocaleFromHeaders() {
 }
 
 export default getRequestConfig(async () => {
-  const locale = await requestLocale();
+  const locale = await getLocaleFromHeaders();
   return {
     messages: (await import(`../messages/${locale}.json`)).default,
     locale,
   };
 });
+
