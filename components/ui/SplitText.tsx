@@ -1,69 +1,56 @@
-"use client";
+'use client';
 
+import React, { useEffect, useRef, useState } from 'react';
 import { useSprings, animated, SpringValue } from '@react-spring/web';
-import { useEffect, useRef, useState } from 'react';
 
-interface SplitTextProps {
+interface SplitTextProps extends React.HTMLAttributes<HTMLSpanElement> {
     text: string;
-    className?: string;
     delay?: number;
 }
 
-const SplitText: React.FC<SplitTextProps> = ({ text, className = '', delay = 100 }) => {
-    const letters = text.split('');
-    const [inView, setInView] = useState(false);
-    const ref = useRef<HTMLParagraphElement>(null);
+export default function SplitText({ text, className = '', delay = 0, ...props }: SplitTextProps): React.ReactElement | null {
+    const [isMounted, setIsMounted] = useState<boolean>(false);
+    const containerRef = useRef<HTMLSpanElement>(null);
+    const [letterWidths, setLetterWidths] = useState<number[]>([]);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setInView(true);
-                    if (ref.current) {
-                        observer.unobserve(ref.current);
-                    }
-                }
-            },
-            { threshold: 0.1, rootMargin: '-100px' }
-        );
-
-        if (ref.current) {
-            observer.observe(ref.current);
+        setIsMounted(true);
+        if (containerRef.current) {
+            const spans = containerRef.current.children;
+            const widths = Array.from(spans).map((span) => span.getBoundingClientRect().width);
+            setLetterWidths(widths);
         }
+    }, [text]);
 
-        return () => observer.disconnect();
-    }, []);
-
-    const springs = useSprings(
-        letters.length,
-        letters.map((_, i) => ({
-            from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
-            to: inView
-                ? async (next: (styles: { opacity: number; transform: string }) => Promise<void>) => {
-                    await next({ opacity: 1, transform: 'translate3d(0,-10px,0)' });
-                    await next({ opacity: 1, transform: 'translate3d(0,0,0)' });
-                }
-                : { opacity: 0, transform: 'translate3d(0,40px,0)' },
-            delay: i * delay,
+    const springs = useSprings<{ opacity: SpringValue<number>; transform: SpringValue<string> }>(
+        text.length,
+        text.split('').map((_, index) => ({
+            from: { opacity: 0, transform: 'translateY(20px)' },
+            to: { opacity: 1, transform: 'translateY(0px)' },
+            delay: delay + index * 30,
+            config: { tension: 300, friction: 10 },
         }))
     );
 
+    if (!isMounted) {
+        return null;
+    }
+
     return (
-        <p className={`inline-block overflow-hidden ${className}`} ref={ref}>
-            {springs.map((props: { opacity: SpringValue<number>; transform: SpringValue<string>; }, index: number) => (
+        <span ref={containerRef} className={`inline-block ${className}`} aria-label={text} {...props}>
+            {springs.map((spring: any, index: number) => (
                 <animated.span
                     key={index}
-                    style={props as {
-                        opacity: SpringValue<number>;
-                        transform: SpringValue<string>;
+                    style={{
+                        ...spring,
+                        display: 'inline-block',
+                        width: letterWidths[index] || 'auto',
                     }}
-                    className="inline-block transform will-change-transform will-change-opacity"
                 >
-                    {letters[index] === ' ' ? ' ' : letters[index]}
+                    {text[index] === ' ' ? '\u00A0' : text[index]}
                 </animated.span>
             ))}
-        </p>
+        </span>
     );
-};
+}
 
-export default SplitText;

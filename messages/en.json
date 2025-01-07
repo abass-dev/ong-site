@@ -17,6 +17,29 @@
       "contact": "Contact us"
     }
   },
+  "hero": {
+    "slide1": {
+      "title": {
+        "part1": "Empowering communities,",
+        "part2": "changing lives"
+      },
+      "description": "Our NGO is committed to creating a positive impact in the world."
+    },
+    "slide2": {
+      "title": {
+        "part1": "Building a better future,",
+        "part2": "one step at a time"
+      },
+      "description": "Join us in our mission for a fairer and more sustainable world."
+    },
+    "slide3": {
+      "title": {
+        "part1": "Together we can make",
+        "part2": "a difference"
+      },
+      "description": "Your support helps us reach more communities in need."
+    }
+  },
   "footer": {
     "rights": "All rights reserved."
   },

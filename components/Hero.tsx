@@ -11,33 +11,25 @@ import SplitText from './ui/SplitText'
 
 const heroContent = [
   {
-    image: '/images/hero1.jpg',
-    title: {
-      part1: 'Empowering communities,',
-      part2: 'changing lives'
-    },
-    description: 'Our NGO is committed to creating a positive impact in the world.'
+    image: '/images/ong-hero.webp',
+    titleKey: 'slide1.title',
+    descriptionKey: 'slide1.description'
   },
   {
-    image: '/images/hero2.jpg',
-    title: {
-      part1: 'Building a better future,',
-      part2: 'one step at a time'
-    },
-    description: 'Join us in our mission for a fairer and more sustainable world.'
+    image: '/images/ong-hero.webp',
+    titleKey: 'slide2.title',
+    descriptionKey: 'slide2.description'
   },
   {
-    image: '/images/hero3.jpg',
-    title: {
-      part1: 'Together we can make',
-      part2: 'a difference'
-    },
-    description: 'Your support helps us reach more communities in need.'
+    image: '/images/ong-hero.webp',
+    titleKey: 'slide3.title',
+    descriptionKey: 'slide3.description'
   }
 ]
 
 export default function Hero() {
   const t = useTranslations('home')
+  const tHero = useTranslations('hero')
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
@@ -78,10 +70,10 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
         >
           <span className="block font-chau-philomene-one">
-            <SplitText text={heroContent[currentIndex].title.part1} className="tracking-wide" delay={10} />
+            <SplitText text={tHero(`${heroContent[currentIndex].titleKey}.part1`)} className="tracking-wide" delay={50} />
           </span>
           <span className="block text-cyan-400 font-chau-philomene-one">
-            <BlurText text={heroContent[currentIndex].title.part2} className="tracking-wide" delay={50} />
+            <BlurText text={tHero(`${heroContent[currentIndex].titleKey}.part2`)} className="tracking-wide" delay={50} />
           </span>
         </motion.h1>
         <motion.div
@@ -91,25 +83,20 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <BlurText text={heroContent[currentIndex].description} className="custom-class" delay={50} />
+          <BlurText text={tHero(heroContent[currentIndex].descriptionKey)} className="custom-class" delay={50} />
         </motion.div>
-        <motion.div
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button asChild size="lg" className="bg-cyan-400 text-white hover:text-gray-200 hover:bg-cyan-500">
             <Link href="/projets">
-              <BlurText text={t('cta.projects')} className="custom-class" delay={50} />
+              {t('cta.projects')}
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="text-cyan-400 hover:text-white hover:bg-cyan-500 border-cyan-400 hover:bg-cyan-400/10">
             <Link href="/contact">
-              <BlurText text={t('cta.contact')} className="custom-class" delay={50} />
+              {t('cta.contact')}
             </Link>
           </Button>
-        </motion.div>
+        </div>
       </div>
     </div>
   )

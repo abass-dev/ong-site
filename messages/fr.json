@@ -18,6 +18,29 @@
       "contact": "Nous contacter"
     }
   },
+  "hero": {
+    "slide1": {
+      "title": {
+        "part1": "Autonomiser les communautés,",
+        "part2": "changer des vies"
+      },
+      "description": "Notre ONG s'engage à créer un impact positif dans le monde."
+    },
+    "slide2": {
+      "title": {
+        "part1": "Construire un meilleur avenir,",
+        "part2": "pas à pas"
+      },
+      "description": "Rejoignez-nous dans notre mission pour un monde plus juste et durable."
+    },
+    "slide3": {
+      "title": {
+        "part1": "Ensemble, nous pouvons faire",
+        "part2": "la différence"
+      },
+      "description": "Votre soutien nous aide à atteindre plus de communautés dans le besoin."
+    }
+  },
   "footer": {
     "rights": "Tous droits réservés."
   },
