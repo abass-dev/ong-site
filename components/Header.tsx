@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="fixed w-full z-30 bg-background/80 backdrop-blur-md"
+      className="fixed w-full z-30 bg-background/80 backdrop-blur-md shadow-sm"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -68,28 +68,29 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-4 mt-8">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`text-sm font-semibold leading-6 ${pathname === item.href
+                    className={`text-lg font-semibold leading-6 ${pathname === item.href
                       ? 'text-primary'
                       : 'text-muted-foreground hover:text-primary'
-                      }`}
+                      } transition-colors duration-200`}
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
               </nav>
-              <div className="mt-6 flex flex-col gap-4">
-                <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="mt-8 flex flex-col gap-4">
+                <div className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200">
                   <Phone className="h-4 w-4" />
                   <span className="text-sm">+227 99 99 99</span>
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button variant="outline" className="w-full justify-start hover:text-primary transition-colors duration-200">
                       <Globe className="mr-2 h-4 w-4" />
                       {currentLocale === 'fr' ? 'Français' : currentLocale === 'en' ? 'English' : 'العربية'}
                     </Button>
@@ -105,7 +106,7 @@ export default function Header() {
                 {mounted && (
                   <Button
                     variant="outline"
-                    className="w-full justify-start"
+                    className="w-full justify-start hover:text-primary transition-colors duration-200"
                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                   >
                     {theme === 'dark' ? <Sun className="mr-2 h-4 w-4" /> : <Moon className="mr-2 h-4 w-4" />}
@@ -124,20 +125,20 @@ export default function Header() {
               className={`text-sm font-semibold leading-6 ${pathname === item.href
                 ? 'text-primary'
                 : 'text-muted-foreground hover:text-primary'
-                }`}
+                } transition-colors duration-200`}
             >
               {item.name}
             </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-8 items-center">
-          <div className="flex items-center gap-2 text-muted-foreground">
+          <div className="flex items-center gap-2 hover:text-primary text-muted-foreground transition-colors duration-200">
             <Phone className="h-4 w-4" />
             <span className="text-sm">+227 99 99 99</span>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button className='hover:text-primary transition-colors duration-200' variant="ghost" size="icon">
                 <Globe className="h-5 w-5" />
                 <span className="sr-only">Change language</span>
               </Button>
@@ -152,6 +153,7 @@ export default function Header() {
           </DropdownMenu>
           {mounted && (
             <Button
+              className='hover:text-primary transition-colors duration-200'
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}

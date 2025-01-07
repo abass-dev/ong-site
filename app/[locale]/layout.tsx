@@ -1,13 +1,19 @@
 import '../globals.css'
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { locales } from '../i18n'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'ONG Site Web',
@@ -38,13 +44,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="flex flex-col min-h-screen">
               <Header />
               <main className="flex-grow pt-16">{children}</main>
               <Footer />
+              <ScrollToTopButton />
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>

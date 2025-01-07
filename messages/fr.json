@@ -39,10 +39,39 @@
     "history": {
       "title": "Notre Histoire",
       "description": "Fondée en 2005, notre organisation est à l'avant-garde du développement communautaire depuis plus de 15 ans, impactant des milliers de vies à travers le monde."
+    },
+    "hero": {
+      "title": "Notre Histoire",
+      "subtitle": "Autonomiser les communautés depuis 2005"
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "integrity": {
+        "title": "Intégrité",
+        "description": "Nous respectons les plus hauts standards d'honnêteté et de transparence dans toutes nos actions."
+      },
+      "compassion": {
+        "title": "Compassion",
+        "description": "Nous abordons notre travail avec empathie et compréhension pour ceux que nous servons."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Nous recherchons constamment de nouvelles façons efficaces de relever les défis mondiaux."
+      }
+    },
+    "team": {
+      "title": "Notre Équipe",
+      "description": "Rencontrez les personnes dévouées qui font avancer notre mission."
+    },
+    "cta": {
+      "title": "Rejoignez Notre Cause",
+      "description": "Ensemble, nous pouvons faire une différence durable dans le monde.",
+      "button": "S'impliquer"
     }
   },
   "projects": {
     "title": "Nos Projets",
+    "learnMore": "En Savoir Plus",
     "project1": {
       "title": "Initiative Eau Propre",
       "description": "Fournir un accès à l'eau potable propre et sûre dans les communautés rurales.",
@@ -55,12 +84,14 @@
     },
     "project3": {
       "title": "Agriculture Durable",
+      "subtitle": "Découvrez comment nous faisons la différence dans les communautés du monde entier",
       "description": "Promotion de pratiques agricoles durables pour améliorer la sécurité alimentaire et les moyens de subsistance.",
       "category": "Agriculture"
     }
   },
   "news": {
     "title": "Dernières Actualités",
+    "subtitle": "Restez informé de nos dernières actions et réussites",
     "news1": {
       "title": "Nouveau Partenariat Annoncé",
       "description": "Nous sommes ravis d'annoncer notre nouveau partenariat avec Global Tech pour apporter l'alphabétisation numérique dans les zones rurales.",
@@ -75,7 +106,9 @@
       "title": "Étape Importante du Projet Atteinte",
       "description": "Notre Initiative Eau Propre a réussi à fournir de l'eau potable à 100 000 personnes cette année.",
       "date": "22 avril 2023"
-    }
+    },
+    "readMore": "Lire Plus",
+    "viewAll": "Voir Toutes les Actualités"
   },
   "contact": {
     "title": "Contactez-nous",
@@ -110,5 +143,28 @@
       "title": "Urgence au Yémen",
       "description": "Venez en aide à nos frères et soeurs au Yémen"
     }
+  },
+  "impact": {
+    "title": "Notre Impact",
+    "subtitle": "Voici comment votre soutien transforme des vies",
+    "peopleHelped": {
+      "number": "500 000+",
+      "text": "Personnes aidées"
+    },
+    "waterAccess": {
+      "number": "1 000+",
+      "text": "Communautés avec accès à l'eau potable"
+    },
+    "educationPrograms": {
+      "number": "250+",
+      "text": "Programmes éducatifs lancés"
+    }
+  },
+  "donation": {
+    "title": "Faire un Don",
+    "description": "Votre soutien nous aide à poursuivre notre travail important.",
+    "customAmount": "Montant Personnalisé",
+    "customAmountPlaceholder": "Entrez un montant personnalisé",
+    "donate": "Faire un Don Maintenant"
   }
 }

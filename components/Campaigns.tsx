@@ -4,7 +4,7 @@ import * as React from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
     Carousel,
     CarouselContent,
@@ -14,6 +14,9 @@ import {
 } from "@/components/ui/carousel"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import SpotlightCard from './ui/SpotlightCard'
+import { SectionTitle } from "@/components/ui/SectionTitle"
+
 
 export default function Campaigns() {
     const t = useTranslations('campaigns')
@@ -26,25 +29,25 @@ export default function Campaigns() {
             id: 1,
             title: t('fiscal.title'),
             description: t('fiscal.description'),
-            image: '/images/campaign-fiscal.jpg'
+            image: '/images/ong-hero.webp'
         },
         {
             id: 2,
             title: t('lebanon.title'),
             description: t('lebanon.description'),
-            image: '/images/campaign-lebanon.jpg'
+            image: '/images/ong-hero.webp'
         },
         {
             id: 3,
             title: t('gaza.title'),
             description: t('gaza.description'),
-            image: '/images/campaign-gaza.jpg'
+            image: '/images/ong-hero.webp'
         },
         {
             id: 4,
             title: t('yemen.title'),
             description: t('yemen.description'),
-            image: '/images/campaign-yemen.jpg'
+            image: '/images/ong-hero.webp'
         }
     ]
 
@@ -62,15 +65,11 @@ export default function Campaigns() {
     return (
         <section className="py-16 bg-gray-50 dark:bg-gray-900">
             <div className="container mx-auto px-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center mb-12"
-                >
-                    <h2 className="text-3xl font-bold mb-4">{t('title')}</h2>
-                    <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
-                </motion.div>
+                <SectionTitle
+                    title={t('title')}
+                    subtitle={t('subtitle')}
+                    className="mb-12"
+                />
 
                 <Carousel
                     setApi={setApi}
@@ -84,28 +83,33 @@ export default function Campaigns() {
                         {campaigns.map((campaign, index) => (
                             <CarouselItem key={campaign.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
                                 <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={current}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.8 }}
-                                        transition={{ duration: 0.5 }}
+                                    <SpotlightCard
+                                        className="custom-spotlight-card border-0 bg-slate-50  dark:bg-gray-900"
+                                        spotlightColor="rgba(34,211,238,0.3)"
                                     >
-                                        <Card className="overflow-hidden h-full">
-                                            <div className="relative h-48 md:h-64">
-                                                <Image
-                                                    src={campaign.image}
-                                                    alt={campaign.title}
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            </div>
-                                            <CardHeader>
-                                                <CardTitle>{campaign.title}</CardTitle>
-                                                <CardDescription>{campaign.description}</CardDescription>
-                                            </CardHeader>
-                                        </Card>
-                                    </motion.div>
+                                        <motion.div
+                                            key={current}
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.8 }}
+                                            transition={{ duration: 0.5 }}
+                                        >
+                                            <Card className="overflow-hidden h-full">
+                                                <div className="relative h-48 md:h-64">
+                                                    <Image
+                                                        src={campaign.image}
+                                                        alt={campaign.title}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                                <CardHeader>
+                                                    <CardTitle>{campaign.title}</CardTitle>
+                                                    <CardDescription>{campaign.description}</CardDescription>
+                                                </CardHeader>
+                                            </Card>
+                                        </motion.div>
+                                    </SpotlightCard>
                                 </AnimatePresence>
                             </CarouselItem>
                         ))}

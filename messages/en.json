@@ -38,10 +38,40 @@
     "history": {
       "title": "Our History",
       "description": "Founded in 2005, our organization has been at the forefront of community development for over 15 years, impacting thousands of lives across the globe."
+    },
+    "hero": {
+      "title": "Our Story",
+      "subtitle": "Empowering communities since 2005"
+    },
+    "values": {
+      "title": "Our Values",
+      "integrity": {
+        "title": "Integrity",
+        "description": "We uphold the highest standards of honesty and transparency in all our actions."
+      },
+      "compassion": {
+        "title": "Compassion",
+        "description": "We approach our work with empathy and understanding for those we serve."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We constantly seek new and effective ways to address global challenges."
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Meet the dedicated individuals driving our mission forward."
+    },
+    "cta": {
+      "title": "Join Our Cause",
+      "description": "Together, we can make a lasting difference in the world.",
+      "button": "Get Involved"
     }
   },
   "projects": {
     "title": "Our Projects",
+    "subtitle": "Discover how we're making a difference in communities worldwide",
+    "learnMore": "Learn More",
     "project1": {
       "title": "Clean Water Initiative",
       "description": "Providing access to clean and safe drinking water in rural communities.",
@@ -60,6 +90,7 @@
   },
   "news": {
     "title": "Latest News",
+    "subtitle": "Stay informed about our latest actions and successes",
     "news1": {
       "title": "New Partnership Announced",
       "description": "We're excited to announce our new partnership with Global Tech to bring digital literacy to rural areas.",
@@ -74,7 +105,9 @@
       "title": "Project Milestone Reached",
       "description": "Our Clean Water Initiative has successfully provided clean water to 100,000 people this year.",
       "date": "April 22, 2023"
-    }
+    },
+    "readMore": "Read More",
+    "viewAll": "View All News"
   },
   "contact": {
     "title": "Contact Us",
@@ -109,5 +142,28 @@
       "title": "Yemen Emergency",
       "description": "Help our brothers and sisters in Yemen"
     }
+  },
+  "impact": {
+    "title": "Our Impact",
+    "subtitle": "See how your support is transforming lives",
+    "peopleHelped": {
+      "number": "500,000+",
+      "text": "People helped"
+    },
+    "waterAccess": {
+      "number": "1,000+",
+      "text": "Communities with clean water access"
+    },
+    "educationPrograms": {
+      "number": "250+",
+      "text": "Education programs launched"
+    }
+  },
+  "donation": {
+    "title": "Make a DonationMake a Donation",
+    "description": "Your support helps us continue our important work.",
+    "customAmount": "Custom Amount",
+    "customAmountPlaceholder": "Enter custom amount",
+    "donate": "Donate Now"
   }
 }

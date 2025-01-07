@@ -1,12 +1,19 @@
 import Hero from '@/components/Hero'
 import Campaigns from '@/components/Campaigns'
+import Impact from '@/components/Impact'
+import LatestNews from '@/components/LatestNews'
+import Donation from '@/components/Donation'
+import Projects from '@/components/Projects'
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col gap-16">
       <Hero />
       <Campaigns />
-      {/* Add other sections of your home page here */}
+      <Impact />
+      <Projects />
+      <Donation />
+      <LatestNews />
     </div>
   )
 }
