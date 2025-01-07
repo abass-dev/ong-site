@@ -30,12 +30,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="block">
-            <SplitText text={t('title.part1')} className="custom-class" delay={10} />
+          <span className="block font-chau-philomene-one">
+            <SplitText text={t('title.part1')} className="tracking-wide" delay={10} />
 
           </span>
-          <span className="block text-cyan-400">
-            <BlurText text={t('title.part2')} className="custom-class" delay={50} />
+          <span className="block text-cyan-400 font-chau-philomene-one">
+            <BlurText text={t('title.part2')} className="tracking-wide" delay={50} />
           </span>
         </motion.h1>
         <motion.div

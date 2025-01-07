@@ -9,6 +9,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				'chau-philomene-one': ['var(--font-chau-philomene-one)', 'sans-serif'],
+			},
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',

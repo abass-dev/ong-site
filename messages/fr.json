@@ -71,6 +71,7 @@
   },
   "projects": {
     "title": "Nos Projets",
+    "subtitle": "Découvrez comment nous faisons la différence dans les communautés du monde entier",
     "learnMore": "En Savoir Plus",
     "project1": {
       "title": "Initiative Eau Propre",
@@ -84,7 +85,6 @@
     },
     "project3": {
       "title": "Agriculture Durable",
-      "subtitle": "Découvrez comment nous faisons la différence dans les communautés du monde entier",
       "description": "Promotion de pratiques agricoles durables pour améliorer la sécurité alimentaire et les moyens de subsistance.",
       "category": "Agriculture"
     }

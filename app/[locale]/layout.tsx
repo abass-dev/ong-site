@@ -1,5 +1,5 @@
 import '../globals.css'
-import { Roboto } from 'next/font/google'
+import { Roboto, Chau_Philomene_One } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import Header from '@/components/Header'
@@ -12,6 +12,13 @@ const roboto = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
+  display: 'swap',
+})
+
+const fraunChauPhilomeneOneces = Chau_Philomene_One({
+  subsets: ['latin'],
+  weight: "400",
+  variable: '--font-chau-philomene-one',
   display: 'swap',
 })
 
@@ -44,7 +51,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body className={roboto.className}>
+      <body className={`${fraunChauPhilomeneOneces.variable} ${roboto.className}`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="flex flex-col min-h-screen">
@@ -59,4 +66,3 @@ export default async function RootLayout({
     </html>
   )
 }
-
