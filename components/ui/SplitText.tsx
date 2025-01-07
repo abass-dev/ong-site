@@ -1,25 +1,35 @@
-// @ts-nocheck
-"use client"
-import { useSprings, animated } from '@react-spring/web';
+"use client";
+
+import { useSprings, animated, SpringValue } from '@react-spring/web';
 import { useEffect, useRef, useState } from 'react';
 
-const SplitText = ({ text, className = '', delay = 100 }) => {
+interface SplitTextProps {
+    text: string;
+    className?: string;
+    delay?: number;
+}
+
+const SplitText: React.FC<SplitTextProps> = ({ text, className = '', delay = 100 }) => {
     const letters = text.split('');
     const [inView, setInView] = useState(false);
-    const ref = useRef();
+    const ref = useRef<HTMLParagraphElement>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setInView(true);
-                    observer.unobserve(ref.current);
+                    if (ref.current) {
+                        observer.unobserve(ref.current);
+                    }
                 }
             },
             { threshold: 0.1, rootMargin: '-100px' }
         );
 
-        observer.observe(ref.current);
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
 
         return () => observer.disconnect();
     }, []);
@@ -29,7 +39,7 @@ const SplitText = ({ text, className = '', delay = 100 }) => {
         letters.map((_, i) => ({
             from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
             to: inView
-                ? async (next) => {
+                ? async (next: (styles: { opacity: number; transform: string }) => Promise<void>) => {
                     await next({ opacity: 1, transform: 'translate3d(0,-10px,0)' });
                     await next({ opacity: 1, transform: 'translate3d(0,0,0)' });
                 }
@@ -39,14 +49,14 @@ const SplitText = ({ text, className = '', delay = 100 }) => {
     );
 
     return (
-        <p
-            className={`inline-block overflow-hidden ${className}`}
-            ref={ref}
-        >
-            {springs.map((props, index) => (
+        <p className={`inline-block overflow-hidden ${className}`} ref={ref}>
+            {springs.map((props: { opacity: SpringValue<number>; transform: SpringValue<string>; }, index: number) => (
                 <animated.span
                     key={index}
-                    style={props}
+                    style={props as {
+                        opacity: SpringValue<number>;
+                        transform: SpringValue<string>;
+                    }}
                     className="inline-block transform will-change-transform will-change-opacity"
                 >
                     {letters[index] === ' ' ? ' ' : letters[index]}
