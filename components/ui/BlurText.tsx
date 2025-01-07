@@ -1,25 +1,35 @@
-// @ts-nocheck
-"use client"
-import { useRef, useEffect, useState } from 'react';
-import { useSprings, animated } from '@react-spring/web';
+"use client";
 
-const BlurText = ({ text, delay = 200, className = '' }) => {
+import { useRef, useEffect, useState, RefObject } from 'react';
+import { useSprings, animated, SpringValue } from '@react-spring/web';
+
+interface BlurTextProps {
+    text: string;
+    delay?: number;
+    className?: string;
+}
+
+const BlurText: React.FC<BlurTextProps> = ({ text, delay = 200, className = '' }) => {
     const words = text.split(' ');
     const [inView, setInView] = useState(false);
-    const ref = useRef();
+    const ref = useRef<HTMLParagraphElement>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setInView(true);
-                    observer.unobserve(ref.current);
+                    if (ref.current) {
+                        observer.unobserve(ref.current);
+                    }
                 }
             },
             { threshold: 0.1 }
         );
 
-        observer.observe(ref.current);
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
 
         return () => observer.disconnect();
     }, []);
@@ -29,7 +39,7 @@ const BlurText = ({ text, delay = 200, className = '' }) => {
         words.map((_, i) => ({
             from: { filter: 'blur(10px)', opacity: 0, transform: 'translate3d(0,-50px,0)' },
             to: inView
-                ? async (next) => {
+                ? async (next: (styles: { filter: string; opacity: number; transform: string }) => Promise<void>) => {
                     await next({ filter: 'blur(5px)', opacity: 0.5, transform: 'translate3d(0,5px,0)' });
                     await next({ filter: 'blur(0px)', opacity: 1, transform: 'translate3d(0,0,0)' });
                 }
@@ -40,10 +50,10 @@ const BlurText = ({ text, delay = 200, className = '' }) => {
 
     return (
         <p ref={ref} className={`inline-block ${className}`}>
-            {springs.map((props, index) => (
+            {springs.map((props: { filter: SpringValue<string>; opacity: SpringValue<number>; transform: SpringValue<string>; }, index: number) => (
                 <animated.span
                     key={index}
-                    style={props}
+                    style={props as { filter: SpringValue<string>; opacity: SpringValue<number>; transform: SpringValue<string> }}
                     className="inline-block will-change-transform will-change-filter will-change-opacity"
                 >
                     {words[index]}&nbsp;

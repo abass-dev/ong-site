@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import Image from 'next/image'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
@@ -55,7 +56,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
             <span className="sr-only">ONG SITE</span>
-            <img className="h-8 w-auto" src="/logo.svg" alt="" />
+            {/* <Image fill className="h-8 w-auto" src="/logo.svg" alt="" /> */}
             <span className="text-xl font-semibold">ONG SITE</span>
           </Link>
         </div>
