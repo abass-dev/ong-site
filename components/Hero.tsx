@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import BlurText from './ui/BlurText'
-import SplitText from './ui/SplitText'
+import { SplitText } from '@open-react-hub/split-text'
 
 const heroContent = [
   {

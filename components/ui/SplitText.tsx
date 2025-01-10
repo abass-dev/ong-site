@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useSprings, animated, SpringValue } from '@react-spring/web';
+import { useSprings, animated, SpringValue, AnimatedProps, SpringConfig } from '@react-spring/web';
 
-interface SplitTextProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface SplitTextProps extends React.HTMLAttributes<HTMLSpanElement> {
     text: string;
     delay?: number;
 }
 
-export default function SplitText({ text, className = '', delay = 0, ...props }: SplitTextProps): React.ReactElement | null {
+export function SplitText({ text, className = '', delay = 0, ...props }: SplitTextProps): React.ReactElement | null {
     const [isMounted, setIsMounted] = useState<boolean>(false);
     const containerRef = useRef<HTMLSpanElement>(null);
     const [letterWidths, setLetterWidths] = useState<number[]>([]);
@@ -22,13 +22,13 @@ export default function SplitText({ text, className = '', delay = 0, ...props }:
         }
     }, [text]);
 
-    const springs = useSprings<{ opacity: SpringValue<number>; transform: SpringValue<string> }>(
+    const springs = useSprings(
         text.length,
         text.split('').map((_, index) => ({
             from: { opacity: 0, transform: 'translateY(20px)' },
             to: { opacity: 1, transform: 'translateY(0px)' },
             delay: delay + index * 30,
-            config: { tension: 300, friction: 10 },
+            config: { tension: 300, friction: 10 } as SpringConfig,
         }))
     );
 
@@ -38,7 +38,7 @@ export default function SplitText({ text, className = '', delay = 0, ...props }:
 
     return (
         <span ref={containerRef} className={`inline-block ${className}`} aria-label={text} {...props}>
-            {springs.map((spring: any, index: number) => (
+            {springs.map((spring: { opacity: SpringValue<number>; transform: SpringValue<string> }, index) => (
                 <animated.span
                     key={index}
                     style={{
