@@ -9,24 +9,26 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-      - ong-site:/app/.next
+      - urnotm:/app/.next
     environment:
       - NODE_ENV=development
       - DATABASE_URL=${DATABASE_URL}
+      - POSTGRES_PRISMA_UR=${DATABASE_URL}
     depends_on:
       - db
-
   db:
     image: postgres:13-alpine
     environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=${PGHOST}
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_PRISMA_UR=${DATABASE_URL}
+      - POSTGRES_PASSWORD=${PGPASSWORD}
+      - POSTGRES_DB=${PGDATABASE}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
-  ong-site:
+  urnotm:
 
 

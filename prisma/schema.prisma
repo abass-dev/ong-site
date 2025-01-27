@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  passwordHash       String
+  salt               String
+  twoFactorSecret    String?
+  twoFactorEnabled   Boolean   @default(false)
+  loginAttempts      Int       @default(0)
+  lastLoginAttempt   DateTime?
+  locked             Boolean   @default(false)
+  lockoutExpiration  DateTime?
+  sessions           Session[]
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  token     String   @unique
+  device    String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model PasswordReset {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model VisitorLog {
+  id                Int      @id @default(autoincrement())
+  hostname          String
+  userAgent         String
+  platform          String
+  language          String
+  screenResolution  String
+  timezone          String
+  referrer          String
+  ip                String
+  timestamp         DateTime @default(now())
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  event       String
+  userEmail   String?
+  ipAddress   String?
+  deviceInfo  String?
+  timestamp   DateTime @default(now())
+}
+
+model ProjectUsage {
+  id        String   @id @default(cuid())
+  domain    String   @unique
+  version   String
+  projectName String
+  createdAt DateTime @default(now())
+}
