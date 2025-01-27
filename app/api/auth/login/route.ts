@@ -1,10 +1,7 @@
-// app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '../../../generated/client';
 import { AuthService } from '@/lib/auth/authUtils';
 import { LoggingService } from '@/lib/auth/logging';
-
-const prisma = new PrismaClient();
+import prisma from '@/lib/prisma';
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,18 +25,12 @@ export async function POST(request: NextRequest) {
         request.ip,
         request.headers.get('user-agent') || undefined
       );
-      return NextResponse.json(
-        { error: 'Invalid credentials' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
 
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {
-      return NextResponse.json(
-        { error: 'User not found' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'User not found' }, { status: 401 });
     }
 
     // 2FA check if enabled
@@ -90,14 +81,10 @@ export async function POST(request: NextRequest) {
       sessionToken,
       requiresTwoFactor: user.twoFactorEnabled
     });
-
   } catch (error) {
-    LoggingService.logError('Login failed', {
-      errorMessage: error instanceof Error ? error.message : 'Unknown error'
-    });
-    return NextResponse.json(
-      { error: 'Login failed' },
-      { status: 500 }
-    );
+    LoggingService.logError('Login failed', { errorMessage: error instanceof Error ? error.message : 'Unknown error' });
+    return NextResponse.json({ error: 'Login failed' }, { status: 500 });
   }
 }
+
+

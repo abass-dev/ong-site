@@ -1,7 +1,6 @@
-import { PrismaClient } from '@/generated/client';
-import crypto from 'crypto';
+import prisma from "@/lib/prisma"
 
-const prisma = new PrismaClient();
+import crypto from 'crypto';
 
 export class AuthService {
   // Generate secure session token
@@ -11,12 +10,12 @@ export class AuthService {
 
   // Create a new session
   static async createSession(
-    userId: string, 
-    device?: string, 
+    userId: string,
+    device?: string,
     ipAddress?: string
   ): Promise<string> {
     const token = this.generateSessionToken();
-    
+
     await prisma.session.create({
       data: {
         userId,
@@ -59,7 +58,7 @@ export class AuthService {
   // Get active sessions for a user
   static async getUserSessions(userId: string) {
     return await prisma.session.findMany({
-      where: { 
+      where: {
         userId,
         expiresAt: { gt: new Date() }
       },
@@ -75,11 +74,11 @@ export class AuthService {
 
   // Revoke all user sessions except current
   static async revokeOtherSessions(
-    userId: string, 
+    userId: string,
     currentToken: string
   ): Promise<void> {
     await prisma.session.deleteMany({
-      where: { 
+      where: {
         userId,
         token: { not: currentToken }
       }

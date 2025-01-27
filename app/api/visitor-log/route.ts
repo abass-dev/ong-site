@@ -1,8 +1,7 @@
 // app/api/visitor-log/route.ts
-import { PrismaClient } from '@/generated/client';
+import prisma from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 
-const prisma = new PrismaClient();
 
 export async function POST(request: NextRequest) {
   try {

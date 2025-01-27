@@ -1,10 +1,7 @@
-// lib/auth/authUtils.ts
-import { PrismaClient } from '@/generated/client'
 import * as crypto from 'crypto'
 import { authenticator } from 'otplib'
 import * as speakeasy from 'speakeasy'
-
-const prisma = new PrismaClient()
+import prisma from '../prisma'
 
 export class AuthService {
   // Generate secure salt
