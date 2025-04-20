@@ -1,5 +1,5 @@
 import '../globals.css'
-import { Roboto, Chau_Philomene_One } from 'next/font/google'
+// import { Roboto, Chau_Philomene_One } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import Header from '@/components/Header'
@@ -7,8 +7,33 @@ import Footer from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { locales } from '../i18n'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
+import { Montserrat, Open_Sans, Playfair_Display } from 'next/font/google';
+import type { Metadata } from 'next';
 
-const roboto = Roboto({
+// Define the fonts
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+});
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-open-sans',
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair-display',
+});
+
+export const metadata: Metadata = {
+  title: 'ONG Site Web',
+  description: 'Site web professionnel pour une ONG',
+};
+/* const roboto = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
@@ -21,11 +46,7 @@ const fraunChauPhilomeneOneces = Chau_Philomene_One({
   variable: '--font-chau-philomene-one',
   display: 'swap',
 })
-
-export const metadata = {
-  title: 'ONG Site Web',
-  description: 'Site web professionnel pour une ONG',
-}
+ */
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -50,8 +71,8 @@ export default async function RootLayout({
   if (!locales.includes(locale as any)) notFound();
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body className={`${fraunChauPhilomeneOneces.variable} ${roboto.className}`}>
+    <html className={`${montserrat.variable} ${openSans.variable} ${playfairDisplay.variable}`} lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
+      <body className="font-body">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="flex flex-col min-h-screen">

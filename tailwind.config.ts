@@ -10,7 +10,9 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				'chau-philomene-one': ['var(--font-chau-philomene-one)', 'sans-serif'],
+				heading: ['var(--font-montserrat)', 'sans-serif'],
+				body: ['var(--font-open-sans)', 'sans-serif'],
+				accent: ['var(--font-playfair-display)', 'serif']
 			},
 			colors: {
 				background: 'hsl(var(--background))',
@@ -24,25 +26,26 @@ export default {
 					foreground: 'hsl(var(--popover-foreground))'
 				},
 				primary: {
-					DEFAULT: '#22d3ee',
+					DEFAULT: '#2E8B57', // Sea Green
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
+					DEFAULT: '#4682B4', // Steel Blue
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					foreground: '#767676' // Medium Gray for secondary text
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
+					DEFAULT: '#F9A825', // Amber Yellow
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
+				dark: '#333333', // Dark Gray for main text
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

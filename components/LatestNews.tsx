@@ -30,7 +30,7 @@ export default function LatestNews() {
                     {news.map((item, index) => (
                         <SpotlightCard
                             key={item.id}
-                            className="custom-spotlight-card border-0 bg-white  dark:bg-gray-900"
+                            className="custom-spotlight-card border-0  bg-white  dark:bg-gray-900"
                             spotlightColor="rgba(34,211,238,0.3)"
                         >
                             <motion.div
@@ -40,14 +40,14 @@ export default function LatestNews() {
                             >
                                 <Card className="h-full flex flex-col">
                                     <CardHeader>
-                                        <CardTitle className="text-xl font-semibold">{item.title}</CardTitle>
+                                        <CardTitle className="text-xl font-heading font-semibold">{item.title}</CardTitle>
                                         <CardDescription className="text-sm text-gray-500 dark:text-gray-400">{item.date}</CardDescription>
                                     </CardHeader>
-                                    <CardContent className="flex-grow">
+                                    <CardContent className="flex-grow font-body">
                                         <p className="text-gray-700 dark:text-gray-300">{item.description}</p>
                                     </CardContent>
                                     <div className="p-4 pt-0 mt-auto">
-                                        <Button variant="outline" asChild className="w-full group">
+                                        <Button variant="outline" asChild className="w-full group border-primary text-primary hover:bg-primary hover:text-white font-heading">
                                             <Link href="/actualites" className="flex items-center justify-center">
                                                 {t('readMore')}
                                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

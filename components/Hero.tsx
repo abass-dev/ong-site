@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import BlurText from './ui/BlurText'
-import { SplitText } from '@open-react-hub/split-text'
+import { SplitText } from './ui/SplitText'
 
 const heroContent = [
   {
@@ -64,21 +64,21 @@ export default function Hero() {
       <div className="relative z-10 container mx-auto px-4 py-32 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         <motion.h1
           key={currentIndex}
-          className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl mb-6"
+          className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl mb-6 font-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="block font-chau-philomene-one">
+          <span className="block">
             <SplitText text={tHero(`${heroContent[currentIndex].titleKey}.part1`)} className="tracking-wide" delay={50} />
           </span>
-          <span className="block text-cyan-400 font-chau-philomene-one">
+          <span className="block text-primary">
             <BlurText text={tHero(`${heroContent[currentIndex].titleKey}.part2`)} className="tracking-wide" delay={50} />
           </span>
         </motion.h1>
         <motion.div
           key={`desc-${currentIndex}`}
-          className="mt-6 text-xl text-gray-100 max-w-3xl"
+          className="mt-6 text-xl text-gray-100 max-w-3xl font-body"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -86,12 +86,12 @@ export default function Hero() {
           <BlurText text={tHero(heroContent[currentIndex].descriptionKey)} className="custom-class" delay={50} />
         </motion.div>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button asChild size="lg" className="bg-cyan-400 text-white hover:text-gray-200 hover:bg-cyan-500">
+          <Button asChild size="lg" className="bg-accent text-white hover:text-gray-200 hover:bg-accent/80 font-heading">
             <Link href="/projets">
               {t('cta.projects')}
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="text-cyan-400 hover:text-white hover:bg-cyan-500 border-cyan-400 hover:bg-cyan-400/10">
+          <Button asChild size="lg" variant="outline" className="text-secondary hover:text-white hover:bg-secondary/20 border-secondary hover:bg-secondary/10 font-heading">
             <Link href="/contact">
               {t('cta.contact')}
             </Link>
@@ -101,4 +101,3 @@ export default function Hero() {
     </div>
   )
 }
-

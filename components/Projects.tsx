@@ -61,16 +61,21 @@ export default function Projects() {
                                     />
                                 </div>
                                 <CardHeader>
-                                    <CardTitle>{project.title}</CardTitle>
+                                    <CardTitle className="font-heading">{project.title}</CardTitle>
                                     <CardDescription>
-                                        <Badge variant="secondary">{project.category}</Badge>
+                                        <Badge variant="secondary" className="bg-secondary text-white font-body text-xs">
+                                            {project.category}
+                                        </Badge>
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent className="flex-grow">
-                                    <p>{project.description}</p>
+                                    <p className="font-body text-dark">{project.description}</p>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button variant="outline" className="w-full">
+                                    <Button
+                                        variant="outline"
+                                        className="w-full border-primary text-primary hover:bg-primary hover:text-white font-heading"
+                                    >
                                         {t('learnMore')}
                                     </Button>
                                 </CardFooter>
@@ -82,4 +87,3 @@ export default function Projects() {
         </section>
     )
 }
-
