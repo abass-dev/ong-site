@@ -9,7 +9,7 @@ import { locales } from '../i18n'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import { Montserrat, Open_Sans, Playfair_Display } from 'next/font/google';
 import type { Metadata } from 'next';
-
+import Analytics from "@/components/Analytics"
 // Define the fonts
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -70,8 +70,20 @@ export default async function RootLayout({
 
   if (!locales.includes(locale as any)) notFound();
 
+  // Check if analytics IDs are available
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  const ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
+
   return (
     <html className={`${montserrat.variable} ${openSans.variable} ${playfairDisplay.variable}`} lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          href="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4160637975098001"
+          as="script"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="font-body">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
@@ -82,6 +94,12 @@ export default async function RootLayout({
               <ScrollToTopButton />
             </div>
           </ThemeProvider>
+          {(GA_MEASUREMENT_ID || ADS_ID) && (
+            <Analytics
+              GA_MEASUREMENT_ID={GA_MEASUREMENT_ID}
+              ADS_ID={ADS_ID}
+            />
+          )}
         </NextIntlClientProvider>
       </body>
     </html>

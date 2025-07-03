@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import BlurText from './ui/BlurText'
 import { SplitText } from './ui/SplitText'
+import Responsive from '@/utils/googleADS/Responsive'
 
 const heroContent = [
   {
@@ -98,6 +99,7 @@ export default function Hero() {
           </Button>
         </div>
       </div>
+      <Responsive />
     </div>
   )
 }

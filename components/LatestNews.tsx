@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from 'lucide-react'
 import SpotlightCard from './ui/SpotlightCard'
 import { SectionTitle } from "@/components/ui/SectionTitle"
+import Responsive from '@/utils/googleADS/Responsive'
 
 export default function LatestNews() {
     const t = useTranslations('news')
@@ -72,6 +73,7 @@ export default function LatestNews() {
                         </Link>
                     </Button>
                 </motion.div>
+                <Responsive />
             </div>
         </section>
     )
