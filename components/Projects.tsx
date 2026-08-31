@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { SectionTitle } from "@/components/ui/SectionTitle"
-import Responsive from '@/utils/googleADS/Responsive'
 
 export default function Projects() {
     const t = useTranslations('projects')
@@ -84,7 +83,6 @@ export default function Projects() {
                         </motion.div>
                     ))}
                 </div>
-                <Responsive />
             </div>
         </section>
     )

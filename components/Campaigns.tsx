@@ -16,7 +16,6 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SpotlightCard from './ui/SpotlightCard'
 import { SectionTitle } from "@/components/ui/SectionTitle"
-import Responsive from '@/utils/googleADS/Responsive'
 
 
 export default function Campaigns() {
@@ -138,7 +137,6 @@ export default function Campaigns() {
                     </div>
                 </Carousel>
             </div>
-            <Responsive />
         </section>
     )
 }

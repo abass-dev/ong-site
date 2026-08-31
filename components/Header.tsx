@@ -87,7 +87,7 @@ export default function Header() {
               <div className="mt-8 flex flex-col gap-4">
                 <div className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200">
                   <Phone className="h-4 w-4" />
-                  <Link href={'tel://+22782001504'} className="text-sm">+227 82 00 15 04</Link>
+                  <Link href={'tel://+22798241163'} className="text-sm">+227 98 24 11 63</Link>
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -135,7 +135,7 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-8 items-center">
           <div className="flex items-center gap-2 hover:text-primary text-muted-foreground transition-colors duration-200">
             <Phone className="h-4 w-4" />
-            <Link href={'tel://+22782001504'} className="text-sm">+227 82 00 15 04</Link>
+            <Link href={'tel://+22798241163'} className="text-sm">+227 98 24 11 63</Link>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
