@@ -29,19 +29,19 @@ export default function Campaigns() {
             id: 1,
             title: t('fiscal.title'),
             description: t('fiscal.description'),
-            image: '/images/ong-hero.webp'
+            image: '/images/fiscal.webp'
         },
         {
             id: 2,
             title: t('lebanon.title'),
             description: t('lebanon.description'),
-            image: '/images/ong-hero.webp'
+            image: '/images/liban.webp'
         },
         {
             id: 3,
             title: t('gaza.title'),
             description: t('gaza.description'),
-            image: '/images/ong-hero.webp'
+            image: '/images/gaza.webp'
         },
         {
             id: 4,
