@@ -29,7 +29,7 @@ export default function Campaigns() {
             id: 1,
             title: t('fiscal.title'),
             description: t('fiscal.description'),
-            image: '/images/fiscal.webp'
+            image: '/images/fiscale.webp'
         },
         {
             id: 2,
