@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from 'lucide-react'
 import SpotlightCard from './ui/SpotlightCard'
 import { SectionTitle } from "@/components/ui/SectionTitle"
-s
+
 export default function LatestNews() {
     const t = useTranslations('news')
 
